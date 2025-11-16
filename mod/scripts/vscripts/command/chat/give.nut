@@ -7,47 +7,43 @@ void function ServerChatCommand_Give_Init()
 {
     if ( IsLobby() || IsMenuLevel() )
         return
-        
     AddChatCommandCallback( "/give", ServerChatCommand_Give )
 }
 
 void function ServerChatCommand_Give( entity player, array<string> args )
 {
-    if ( !Fire_IsPlayerAdmin( player ) )
-    {
+    if ( !Fire_IsPlayerAdmin( player ) ){
         Fire_ChatServerPrivateMessage( player, "你没有管理员权限" )
         return
     }
-
-    if ( args.len() != 2 )
-    {
+    if ( args.len() != 2 ){
         Fire_ChatServerPrivateMessage( player, "用法：/give <武器ID> <玩家名称/all>" )
         return
     }
 
-    string weaponId = args[0]
-    string command1 = args[1]
+    string args0 = args[0]
+    string args1 = args[1]
 
-    string weaponType = Fire_GetWeaponType( weaponId )
+    string weaponType = Fire_GetWeaponType( args0 )
     if( weaponType == "unknown" )
     {
-        Fire_ChatServerPrivateMessage( player, "未知武器ID: " + weaponId )
+        Fire_ChatServerPrivateMessage( player, "未知武器ID: " + args0 )
         return
     }
 
     array<entity> targets
-    switch(command1){
+    switch(args1){
         case "all":
             targets = GetPlayerArray()
             break
         default:
-            targets = GetPlayersByNamePrefix(command1)
+            targets = GetPlayersByNamePrefix(args1)
             break
     }
 
     if(targets.len() == 0)
     {
-        Fire_ChatServerPrivateMessage( player, "未找到玩家: " + command1 )
+        Fire_ChatServerPrivateMessage( player, "未找到玩家: " + args1 )
         return
     }
 
@@ -57,39 +53,33 @@ void function ServerChatCommand_Give( entity player, array<string> args )
             Fire_ChatServerPrivateMessage(player, "玩家 " + target.GetPlayerName() + " 无效或死亡")
             continue
         }
-        Fire_Give( target, weaponId )
-        Fire_ChatServerPrivateMessage( player, "已给予玩家 " + target.GetPlayerName() + " 武器 " + weaponId )
+        Fire_Give( target, args0 )
+        Fire_ChatServerPrivateMessage( player, "已给予玩家 " + target.GetPlayerName() + " 武器 " + args0 )
     }
 }
 
 void function Fire_Give( entity player, string weaponId )
 {
-    try{
-        string weaponType = Fire_GetWeaponType( weaponId )
+    string weaponType = Fire_GetWeaponType( weaponId )
 
-        switch ( weaponType )
-        {
-            case "melee":
-                Fire_GiveMelee( player, weaponId )
-                break
-
-            case "ability":
-            case "titan_ability":
-                ReplacePlayerOffhand( player, weaponId )
-                break
-
-            case "titan_core":
-                player.TakeOffhandWeapon( OFFHAND_EQUIPMENT )
-                player.GiveOffhandWeapon( weaponId, OFFHAND_EQUIPMENT )
-                break
-
-            case "titan_weapon":
-            case "turret_weapon":
-            case "weapon":
-                Fire_GiveWeapon( player, weaponId )
-                break
-        }
-    }catch(error){
+    switch ( weaponType )
+    {
+        case "melee":
+            Fire_GiveMelee( player, weaponId )
+            break
+        case "ability":
+        case "titan_ability":
+            ReplacePlayerOffhand( player, weaponId )
+            break
+        case "titan_core":
+            player.TakeOffhandWeapon( OFFHAND_EQUIPMENT )
+            player.GiveOffhandWeapon( weaponId, OFFHAND_EQUIPMENT )
+            break
+        case "titan_weapon":
+        case "turret_weapon":
+        case "weapon":
+            Fire_GiveWeapon( player, weaponId )
+            break
     }
 }
 
