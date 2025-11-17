@@ -2,9 +2,6 @@ global function ServerChatCommand_Csb_Init
 
 void function ServerChatCommand_Csb_Init()
 {
-    if (IsLobby() || IsMenuLevel())
-        return
-    
     AddChatCommandCallback( "/csb", ServerChatCommand_Csb )
 }
 
