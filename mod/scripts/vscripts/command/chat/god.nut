@@ -14,7 +14,7 @@ void function ServerChatCommand_God(entity player, array<string> args)
     }
 
     if( args.len() != 1 ){
-        Fire_ChatServerPrivateMessage(player, "用法：/god <玩家名称/all>")
+        Fire_ChatServerPrivateMessage(player, "用法：/god < name/all/imc/militia >")
         return
     }
 
@@ -22,11 +22,17 @@ void function ServerChatCommand_God(entity player, array<string> args)
     array<entity> targets
 
     switch(args0.tolower()){
-        case"all":
+        case "all":
             targets = GetPlayerArray()
             break
+        case "imc":
+            targets = GetPlayerArrayOfTeam( TEAM_IMC )
+            break
+        case "militia":
+            targets = GetPlayerArrayOfTeam( TEAM_MILITIA )
+            break
         default:
-            targets = GetPlayersByNamePrefix(args0)
+            targets = GetPlayersByNamePrefix( args0 )
             break
     }
 
