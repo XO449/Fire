@@ -30,6 +30,11 @@ ClClient_MessageStruct function OnReceivedSayTextMessage(ClClient_MessageStruct 
 
     array<string> words = split(chatText, " ")
     string command = words[0]
+    array<string> args = []
+    for(int i = 1; i < words.len(); i++) {
+        if(words[i] != "")
+            args.append(words[i])
+    }
     
     if(command in ChatCommandCallbacks)
     {
