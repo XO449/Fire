@@ -64,6 +64,7 @@ Fire_AdminUIDs "1013199872353,1234567890123,9876543210987"
 - `/unmute <name>`
 - `/sbc <name>`
 - `/team <name/all/imc/militia> <team>`
+- `/checkver`
 
 # 回调
 ### **聊天命令函数（ChatCommands.gnut）**
