@@ -276,6 +276,14 @@
 		{
 			"Path": "command/chat/sv_switch.nut",
 			"RunOn": "SERVER && MP"
+		},
+		{
+			"Path": "command/chat/sv_money.nut",
+			"RunOn": "SERVER && MP"
+		},
+		{
+			"Path": "command/chat/sv_reserve.nut",
+			"RunOn": "SERVER && MP"
 		}
 	]
 }

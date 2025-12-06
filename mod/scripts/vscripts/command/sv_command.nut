@@ -22,6 +22,11 @@ void function FireCommand_Init()
     {
         ChatCommand_Switch_Init()
     }
+    if( GameRules_GetGameMode() == FD )
+    {
+        ChatCommand_Money_Init()
+        ChatCommand_Reserve_Init()
+    }
     if( !IsLobby() && !IsMenuLevel() )
     {
         SpacebasedCannon_Init()
