@@ -1,6 +1,6 @@
 # Fire
 
-[BiliBili](https://space.bilibili.com/3493268113328579) | [GitHub](https://github.com/MiyamaeNonoa/Fire/tree/main) | [提交问题](https://github.com/MiyamaeNonoa/Fire/issues)
+[BiliBili](https://space.bilibili.com/3493268113328579) | [GitHub](https://github.com/MiyamaeNonoa/Fire/tree/main) | [GitHub Issue](https://github.com/MiyamaeNonoa/Fire/issues)
 
 ## 概述
 Fire 是一个提供多项游戏管理功能的插件(到底该叫做插件还是模组qwq)
@@ -82,17 +82,6 @@ Fire_AdminUIDs "1013199872353,1234567890123,9876543210987"
 | `IsChatCommandRegistered`   | 检查聊天命令是否已注册           | `bool` | 存在返回 `true`，否则 `false`     |
 | `RemoveChatCommandCallback` | 移除已注册的聊天命令             | `bool` | 移除成功返回 `true`               |
 
-------
-
-### **控制台命令函数（ConsoleCommands.gnut）**
-
-| 函数                           | 作用                               | 返回值 | 说明                              |
-| :----------------------------- | :--------------------------------- | :----- | :-------------------------------- |
-| `AddConsoleCommandCallback`    | 注册一个新的控制台命令及其回调函数 | `bool` | 成功返回 `true`，失败返回 `false` |
-| `SetConsoleCommandCallback`    | 修改已注册控制台命令的回调函数     | `bool` | 只能修改已存在的命令              |
-| `IsConsoleCommandRegistered`   | 检查控制台命令是否已注册           | `bool` | 存在返回 `true`，否则 `false`     |
-| `RemoveConsoleCommandCallback` | 移除已注册的控制台命令             | `bool` | 移除成功返回 `true`               |
-
 ## **示例代码（聊天命令）**
 
 ```squirrel
@@ -103,6 +92,17 @@ void function OnChatCommand(entity player, array<string> args)
     Fire_ChatServerPrivateMessage( player, "hello " + player.GetPlayerName() )
 }
 ```
+
+------
+
+### **控制台命令函数（ConsoleCommands.gnut）**
+
+| 函数                           | 作用                               | 返回值 | 说明                              |
+| :----------------------------- | :--------------------------------- | :----- | :-------------------------------- |
+| `AddConsoleCommandCallback`    | 注册一个新的控制台命令及其回调函数 | `bool` | 成功返回 `true`，失败返回 `false` |
+| `SetConsoleCommandCallback`    | 修改已注册控制台命令的回调函数     | `bool` | 只能修改已存在的命令              |
+| `IsConsoleCommandRegistered`   | 检查控制台命令是否已注册           | `bool` | 存在返回 `true`，否则 `false`     |
+| `RemoveConsoleCommandCallback` | 移除已注册的控制台命令             | `bool` | 移除成功返回 `true`               |
 
 ## **示例代码（控制台命令）**
 
@@ -116,19 +116,31 @@ bool function OnConsoleCommand(entity player, array<string> args)
 }
 ```
 
-## Fire v1.2.0 更新日志
+# 更新日志
+
+## v1.3.0
+
+### 新功能
+
+- 新增 `fire` 控制台命令，用于显示插件信息
+- 新增 `/swit` 聊天命令，管理员可以切换指定玩家的阵营
+- 新增 `/money` 和 `/reserve` 聊天命令，仅在边境模式下可用，支持发放金钱和设置团队预留
+
+## v1.2.1
+
+### 修复
+
+- 修复了开发版本检测逻辑中的错误，正确识别包含"-dev"后缀的版本
+
+## v1.2.0
 
 ### 新功能
 
 - 添加版本检测功能，管理员会自动收到新版本通知
-- 新增 [/checkver](javascript:void(0)) 命令，允许管理员手动检查版本更新
+- 新增 /checkver 命令，允许管理员手动检查版本更新
 
 ### 改进与重构
 
 - 所有聊天命令脚本文件重命名为 `sv_` 前缀。
-- 提取通用工具函数到 [sh_util.gnut](javascript:void(0))。
+- 提取通用工具函数到 sh_util.gnut。
 - 重构HUD消息优先级队列系统。
-
-### 文档更新
-
-- 在 [README.md](javascript:void(0)) 中添加了 [/checkver](javascript:void(0)) 命令说明
