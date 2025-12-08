@@ -18,6 +18,7 @@ void function FireCommand_Init()
     ChatCommand_Aa_Init()
     ChatCommand_Map_Init()
     ChatCommand_Csb_Init()
+    ChatCommand_Reload_Init()
     if( !IsFFAGame() )
     {
         ChatCommand_Switch_Init()
