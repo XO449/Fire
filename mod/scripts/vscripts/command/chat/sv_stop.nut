@@ -14,7 +14,7 @@ void function ChatCommand_Stop(entity player, array<string> args)
         return
     }
     if(args.len() != 1){
-        Fire_ChatServerPrivateMessage(player, "用法: /stop < 原因 >")
+        Fire_ChatServerPrivateMessage(player, "用法: /stop <reason>")
         return
     }
 

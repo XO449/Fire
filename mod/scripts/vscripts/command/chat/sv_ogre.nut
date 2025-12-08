@@ -17,7 +17,7 @@ void function ChatCommand_Ogre(entity player, array<string> args)
 
     if(args.len() != 1)
     {
-        Fire_ChatServerPrivateMessage(player, "用法: /ogre < 玩家名称/all >")
+        Fire_ChatServerPrivateMessage(player, "用法: /ogre < name/all >")
         return
     }
 

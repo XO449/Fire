@@ -8,7 +8,7 @@ void function ChatCommand_Uid_Init()
 void function ChatCommand_Uid( entity player, array<string> args )
 {
     if(args.len() != 1){
-        Fire_ChatServerPrivateMessage(player, "用法: /uid < 玩家名称 >")
+        Fire_ChatServerPrivateMessage(player, "用法: /uid < name >")
         return
     }
 

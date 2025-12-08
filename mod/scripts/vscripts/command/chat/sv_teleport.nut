@@ -13,7 +13,7 @@ void function ChatCommand_Tp(entity player, array<string> args)
     }
 
     if(args.len() != 2){
-        Fire_ChatServerPrivateMessage(player, "用法: /tp < 玩家名称/all > < 玩家名称 >")
+        Fire_ChatServerPrivateMessage(player, "用法: /tp < name/all > < name >")
         return
     }
 

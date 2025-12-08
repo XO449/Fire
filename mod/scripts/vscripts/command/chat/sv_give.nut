@@ -15,7 +15,7 @@ void function ChatCommand_Give( entity player, array<string> args )
         return
     }
     if ( args.len() != 2 ){
-        Fire_ChatServerPrivateMessage( player, "用法：/give <武器ID> <玩家名称/all>" )
+        Fire_ChatServerPrivateMessage( player, "用法：/give <武器ID> <name/all>" )
         return
     }
 

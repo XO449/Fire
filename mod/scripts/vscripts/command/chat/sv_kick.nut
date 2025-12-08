@@ -16,7 +16,7 @@ void function ChatCommand_Kick(entity player, array<string> args)
     }
 
     if(args.len() < 1 || args.len() > 2){
-        Fire_ChatServerPrivateMessage( player, "用法: /kick < 玩家名称 > [ 原因 ]" )
+        Fire_ChatServerPrivateMessage( player, "用法: /kick < name > [ reason ]" )
         return
     }
 

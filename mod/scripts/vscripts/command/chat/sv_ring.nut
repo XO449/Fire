@@ -29,7 +29,7 @@ void function ChatCommand_Ring(entity player, array<string> args)
 
     if(args.len() == 0)
     {
-        Fire_ChatServerPrivateMessage(player, "用法: /ring <ring类型> <玩家名称/all> [持续时间]")
+        Fire_ChatServerPrivateMessage(player, "用法: /ring <ring类型> <name/all> [持续时间]")
         Fire_ChatServerPrivateMessage(player, "类型: 1=中环, 2=前环, 3=后环, clear=清除所有环")
         return
     }
@@ -54,7 +54,7 @@ void function ChatCommand_Ring(entity player, array<string> args)
 
     if(args.len() < 2)
     {
-        Fire_ChatServerPrivateMessage(player, "用法：/ring <ring类型> <玩家名称/all> [持续时间]")
+        Fire_ChatServerPrivateMessage(player, "用法：/ring <ring类型> <name/all> [持续时间]")
         Fire_ChatServerPrivateMessage(player, "类型: 1=中环, 2=前环, 3=后环, clear=清除所有环")
         return
     }
