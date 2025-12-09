@@ -37,7 +37,7 @@ void function ChatCommand_Kick(entity player, array<string> args)
     Fire_KickPlayer( target, reason )
 }
 
-void function Fire_KickPlayer( entity player, string reason )
+void function Fire_KickPlayer( entity player, string reason = "" )
 {
     string playerName = player.GetPlayerName()
     string playerUID = GetPlayerUID(player)
