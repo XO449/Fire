@@ -299,6 +299,10 @@
 		{
 			"Path": "command/chat/sv_command.nut",
 			"RunOn": "SERVER && MP"
+		},
+		{
+			"Path": "command/chat/sv_loadout.nut",
+			"RunOn": "SERVER && MP"
 		}
 	]
 }

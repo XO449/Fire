@@ -57,5 +57,6 @@ void function FireCommand_Init()
         ChatCommand_Danmaku_Init()
         ChatCommand_Hack_Init()
         ChatCommand_Eject_Init()
+        ChatCommand_Loadout_Init()
     }
 }
