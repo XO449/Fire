@@ -20,5 +20,5 @@ void function ChatCommand_Script(entity player, array<string> args)
     {
         code += args[i] + " "
     }
-    ServerCommand(code)
+    ServerCommand("script " + code)
 }
