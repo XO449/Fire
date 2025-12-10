@@ -71,6 +71,7 @@ Fire_AdminUIDs "1013199872353,1234567890123,9876543210987"
 - `/script <code>`
 - `/reload`
 - `/command <command>`
+- `/load <name/all/imc/militia>`
 
 # 控制台命令
 - `fire`
