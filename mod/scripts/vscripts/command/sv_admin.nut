@@ -1,18 +1,7 @@
-global function ChatCommand_Admin_Init
 global function Fire_GetAdminArray
 global function Fire_IsPlayerAdmin
 global function Fire_SetPlayerAdmin
 global function Fire_NotifyAllAdmins
-
-void function ChatCommand_Admin_Init()
-{
-    AddChatCommandCallback( "/admin", ChatCommand_Admin_Threaded )
-}
-
-void function ChatCommand_Admin_Threaded( entity player, array<string> args )
-{
-    Fire_ChatServerPrivateMessage( player, "开发中..." )
-}
 
 array<entity> function Fire_GetAdminArray()
 {
