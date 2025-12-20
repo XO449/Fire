@@ -16,6 +16,10 @@ void function ChatCommand_Tf_Threaded(entity player, array<string> args)
         Fire_ChatServerPrivateMessage(player, "用法: /tf < name/all/imc/militia >")
         return
     }
+    if( SpawnPoints_GetTitan().len() < 1 ){
+        Fire_ChatServerPrivateMessage(player, "泰坦生成点不足，无法召唤泰坦")
+        return
+    }
 
     string args0 = args[0]
     array<entity> targets
@@ -42,8 +46,8 @@ void function ChatCommand_Tf_Threaded(entity player, array<string> args)
     foreach(target in targets){
         string targetName = target.GetPlayerName()
 
-        if( !IsValid(target) || !IsAlive(target) ){
-            Fire_ChatServerPrivateMessage(player, "玩家 " + targetName + " 无效或死亡")
+        if( !IsAlive(target) ){
+            Fire_ChatServerPrivateMessage(player, "玩家 " + targetName + " 已死亡")
             continue
         }
         if( player.IsTitan() || IsValid(player.GetPetTitan()) ){
